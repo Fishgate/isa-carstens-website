@@ -1,0 +1,131 @@
+<?php
+/*
+Template Name: Photo Gallery
+*/
+?>
+
+<?php get_header(); ?>
+
+                        <div id="slides-holder-generic">
+                            <div class="slide-img">
+                                <img src="<?php echo get_template_directory_uri(); ?>/library/images/about_head.jpg" alt="About Us header image" /><!-- http://www.placehold.it/1920x250 -->
+                            </div>
+                        </div>
+
+			<div id="content" class="content-generic">
+                            
+				<div id="inner-content" class="wrap clearfix">
+                                    
+                                    <!-- PAGE H1 -->
+                                    <h1 class="page-title"><?php the_title(); ?></h1>
+                                        <!-- BREADCRUM NAVXT -->
+                                        <div class="breadcrumbs clearfix">
+                                            <span class="left fa fa-map-marker"></span>
+                                            <p>You are here: </p>
+                                            <?php if(function_exists('bcn_display'))
+                                            {
+                                                bcn_display();
+                                            }?>
+                                        </div>
+						<div id="main" class="eightcol first clearfix" role="main">
+
+							<?php if (have_posts()) : ?>
+                                                    
+                                                                        <article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
+                                                                            
+                                                                            <section class="entry-content clearfix" itemprop="articleBody">
+                                                                                
+                                                                                <?php
+                                                                                
+                                                                                global $nggdb;
+                                                                                $nextg = new $nggdb;
+                                                                                
+                                                                                ?>
+                                                                                
+                                                                                <?php $i = 1; foreach($nextg->find_all_galleries() as $gallery) : if($gallery->slug != 'staff') : ?>
+                                                                                    
+                                                                                    <?php if($i % 2 == 0) echo '<div class="left divide-entry">&nbsp;</div>'; ?>
+                                                                                
+                                                                                    <?php 
+                                                                                    
+                                                                                    $images = $nextg->get_gallery($gallery->gid);
+                                                                                    
+                                                                                    $last_updated = 0;
+                                                                                    
+                                                                                    foreach($images as $image) {
+                                                                                        if($gallery->previewpic === $image->pid) {
+                                                                                            $preview_pic_url = content_url('gallery/' . $image->slug . $image->thumbFolder . $image->meta_data['thumbnail']['filename']);
+                                                                                            $preview_pic_alttext = $image->alttext;
+                                                                                        }
+                                                                                        
+                                                                                        if($last_updated < $image->updated_at) {
+                                                                                                $last_updated = $image->updated_at;
+                                                                                        }
+                                                                                        
+                                                                                        ?>
+                                                                                        <a class="fancybox <?php echo "fancygroup$i"; ?>" data-fancybox-group="<?php echo "gallery$i"; ?>" title="<?php echo $image->alttext; ?>" href="<?php echo $image->imageURL; ?>"></a>
+                                                                                        <?php
+                                                                                    }
+                                                                                    
+                                                                                    ?>
+                                                                                    
+                                                                                    <div class="left col-6-entry">
+                                                                                        <div class="gallery-thumb-holder">
+                                                                                            <img class="response" alt="<?php echo $preview_pic_alttext; ?>" src="<?php echo $preview_pic_url; ?>" />
+                                                                                            <div class="gallery-view-opt clearfix">
+                                                                                                <span class="gallery-view-count right"><?php echo count($images); ?></span>
+                                                                                                <div id="<?php echo "gallery$i"; ?>" class="fa fa-search right pointer"></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <h3><?php echo $gallery->title; ?></h3>
+                                                                                        <p class="byline vcard">
+                                                                                            <?php
+                                                                                                printf( __( 'Updated on <time class="green updated" datetime="%1$s" pubdate>%2$s</time>', 'bonestheme' ), date(get_option('date_format'), $last_updated), date(get_option('date_format'), $last_updated) );
+                                                                                            ?>
+                                                                                        </p>
+                                                                                    </div>
+                                                                               
+                                                                                    <?php if($i % 2 == 0) echo '<br clear="all" /><hr />'; ?>
+                                                                                
+                                                                                <?php endif; $i++; endforeach; ?>
+                                                                                        
+                                                                            </section>
+                                                                            
+                                                                        </article>
+                                                    
+                                                                        <?php if ( function_exists( 'bones_page_navi' ) ) { ?>
+										<?php bones_page_navi(); ?>
+									<?php } else { ?>
+										<nav class="wp-prev-next">
+											<ul class="clearfix">
+												<li class="prev-link"><?php next_posts_link( __( '&laquo; Older Entries', 'bonestheme' )) ?></li>
+												<li class="next-link"><?php previous_posts_link( __( 'Newer Entries &raquo;', 'bonestheme' )) ?></li>
+											</ul>
+										</nav>
+									<?php } ?>
+                                                    
+                                                        <?php else : ?>
+                                                            
+									<article id="post-not-found" class="hentry clearfix">
+											<header class="article-header">
+												<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
+										</header>
+											<section class="entry-content">
+												<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>
+										</section>
+										<footer class="article-footer">
+												<p><?php _e( 'This is the error message in the page-custom.php template.', 'bonestheme' ); ?></p>
+										</footer>
+									</article>
+
+							<?php endif; ?>
+
+						</div>
+
+						<?php get_sidebar('about'); ?>
+
+				</div>
+
+			</div>
+
+<?php get_footer(); ?>

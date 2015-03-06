@@ -1,0 +1,32 @@
+				<div id="sidebar1" class="sidebar fourcol last clearfix" role="complementary">
+
+					
+                                        
+                                        <div class="widget">
+                                            
+                                            <h4 class="widgettitle orange_head">Contact Us</h4>
+
+                                            <p>Please complete the form below and we will get back to you as soon as we can.</p>
+
+                                            <form id="contact-form">
+                                                <input type="text" id="nameAndSurname" name="Name & Surname" value="Name & Surname" data-default="Name & Surname" />
+                                                <input type="text" id="school" name="School" value="School" data-default="School" />
+                                                <input type="text" id="subject" name="Subject" value="Subject" data-default="Subject" />
+                                                <input type="text" id="grade" name="Grade" value="Grade" data-default="Grade" />
+                                                <input type="text" id="cellNumber" name="Cell Number" value="Cellphone Number" data-default="Cellphone Number" />
+                                                <input type="text" id="email" name="Email" value="Email" data-default="Email" />         
+                                                <input type="text" id="parentContact" name="Parent Contact Number" value="Parent Contact Number" data-default="Parent Contact Number" />
+                                                <textarea id="message" name="Message" data-default="Message">Message</textarea>
+                                                
+                                                <input type="Submit" value="Submit" />
+                                            </form>
+                                        
+                                        </div>
+                                    
+                                    <?php if ( is_active_sidebar( 'contact' ) ) : ?>
+
+						<?php dynamic_sidebar( 'contact' ); ?>
+                                  
+					<?php endif; ?>
+
+				</div>

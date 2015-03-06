@@ -1,0 +1,737 @@
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Tablet & Small Desktop Stylesheet
+
+Here's where you can start getting into the good stuff.
+This size will work on iPads, other tablets, and desktops.
+So you can start working with more styles, background images,
+and other resources. You'll also notice the grid starts to
+come into play. Have fun!
+
+******************************************************************/
+
+
+/*********************
+GENERAL STYLES
+*********************/
+
+body {}
+
+/*********************
+LAYOUT & GRID STYLES
+*********************/
+
+.wrap {
+	max-width: 1140px;
+}
+
+/*********************
+HEADER STYLES
+*********************/
+
+.header {}
+
+	#logo {}
+
+/*********************
+NAVIGATION STYLES
+*********************/
+
+.nav {
+	/*background: #eee;
+	border: 0;*/
+	ul {
+		margin-top:0;
+	}
+	li {
+		float: left;
+		position: relative;
+                width: 14.285%;
+                text-align: center;
+
+		a {
+			border-bottom: 5px solid transparent;
+                        
+
+			/*
+			you can use hover styles here even though this size
+			has the possibility of being a mobile device.
+			*/
+			&:hover, &:focus {
+				border-bottom: 5px solid @isa-orange;
+                                background: @isa-green;
+                                color: @white;
+			}
+		}
+
+		&:first-child {}
+		&:last-child {}
+
+		/*
+		plan your menus and drop-downs wisely.
+		*/
+		ul.sub-menu,
+		ul.children {
+                        background: rgba(0,0,0,0.7);
+			margin-top: 0;
+			border-top: 0;
+			position: absolute;
+			overflow: hidden;
+			visibility: hidden;
+			z-index: 8999;
+
+			li {
+                            width: 163px;
+                            text-align: left;
+				a {
+					padding-left: 15px;
+					border-right: 0;
+					display: block;
+					width: 163px;
+
+					&:hover,
+					&:focus {
+                                            background: @isa-green;
+                                        }
+
+					&:link {}
+				}
+
+				&:first-child {}
+
+				&:last-child {
+
+					a {
+						/*border-bottom: 0;*/
+					}
+				}
+                                
+				/*
+				if you need to go deeper, go nuts
+				just remember deeper menus suck
+				for usability. k, bai.
+				*/
+				ul{}
+			}
+
+			/* highlight sub-menu current page */
+			li.current-menu-item,
+			li.current_page_item,
+			li.current_page_ancestor {
+				a {}
+			}
+                        li.current-menu-item{
+                            background: @isa-green;
+                            a{
+                                border-bottom: 5px solid @isa-orange!important;
+                            }
+                        }
+		}
+
+		/* showing sub-menus */
+		&:hover ul {
+			top: auto;
+			overflow: visible;
+			visibility:visible;
+		}
+
+	} /* end .menu ul li */
+
+	/* highlight current page */
+	li.current-menu-item,
+	li.current_page_item,
+	li.current_page_ancestor {
+		&>a {
+                        border-bottom: 5px solid @isa-orange !important;
+                        background: @isa-green;
+                }
+	}
+
+     
+        /* end current highlighters */
+}
+
+#inner-footer {
+    li.current-menu-item,
+    li.current_page_item,
+    li.current_page_ancestor {
+            &>a {
+                    border-bottom: none !important;
+                    background: none !important;
+                    color: @isa-orange;
+            }
+    }
+}
+
+
+.current_page_parent a{}
+/* end .nav */
+
+/*********************
+SIDEBARS & ASIDES
+*********************/
+
+.sidebar {
+	/*margin-top: 2.2em;*/
+}
+
+	.widgettitle {
+		/*border-bottom: 2px solid #444;*/
+                
+	}
+
+	.widget {
+
+		ul {
+			li {
+				&:first-child {}
+				&:last-child {}
+				a {
+                                    
+                                }
+				/* deep nesting */
+
+				ul {
+					margin-top: 0.75em;
+					padding-left: 1em;
+				}
+			}
+		}
+	}
+
+
+	/* links widget */
+	.widget_links {}
+	.widget_links ul {}
+	.widget_links ul li {}
+	.widget_links ul li a {}
+
+	/* meta widget */
+	.widget_meta {}
+	.widget_meta ul {}
+	.widget_meta ul li {}
+	.widget_meta ul li a {}
+
+	/* pages widget */
+	.widget_pages {}
+	.widget_pages ul {}
+	.widget_pages ul li {}
+	.widget_pages ul li a {}
+
+	/* recent-posts widget */
+	.widget_recent_entries {}
+	.widget_recent_entries ul {}
+	.widget_recent_entries ul li {}
+	.widget_recent_entries ul li a {}
+
+	/* archives widget */
+	.widget_archive {}
+	.widget_archive ul {}
+	.widget_archive ul li {}
+	.widget_archive ul li a {}
+	.widget_archive select {}
+	.widget_archive option {}
+
+	/* tag-cloud widget */
+	.widget_links {}
+	.widget_links li:after {}
+	.widget_links li:before {}
+	.widget_tag_cloud {}
+	.widget_tag_cloud a {}
+	.widget_tag_cloud a:after {}
+	.widget_tag_cloud a:before {}
+
+	/* calendar widget */
+	.widget_calendar {}
+	#calendar_wrap {}
+	#calendar_wrap th {}
+	#calendar_wrap td {}
+	#wp-calendar tr td {}
+	#wp-calendar caption {}
+	#wp-calendar a {}
+	#wp-calendar #today {}
+	#wp-calendar #prev {}
+	#wp-calendar #next {}
+	#wp-calendar #next a {}
+	#wp-calendar #prev a {}
+
+	/* category widget */
+	.widget_categories {}
+	.widget_categories ul {}
+	.widget_categories ul li {}
+	.widget_categories ul ul.children {}
+	.widget_categories a {}
+	.widget_categories select{}
+	.widget_categories select#cat {}
+	.widget_categories select.postform {}
+	.widget_categories option {}
+	.widget_categories .level-0 {}
+	.widget_categories .level-1 {}
+	.widget_categories .level-2 {}
+	.widget_categories .level-3 {}
+
+	/* recent-comments widget */
+	.recentcomments {}
+	#recentcomments {}
+	#recentcomments li {}
+	#recentcomments li a {}
+	.widget_recent_comments {}
+
+	/* search widget */
+	#searchform {}
+	.widget_search {}
+	.screen-reader-text {}
+
+	/* text widget */
+	.textwidget {}
+	.widget_text {}
+	.textwidget p {}
+
+
+/*********************
+FOOTER STYLES
+*********************/
+
+/*
+you'll probably need to do quite a bit
+of overriding here if you styled them for
+mobile. Make sure to double check these!
+*/
+.footer-links {
+	ul {
+		li {
+			a {
+				&:hover {
+                                }
+			}
+			/*
+			be careful with the depth of your menus.
+			it's very rare to have multi-depth menus in
+			the footer.
+			*/
+			ul {}
+		}
+	}
+} /* end .footer-links */
+
+
+
+
+/*=========================================================
+                Tyrone custom styles
+==========================================================*/
+
+/*==========================================
+            ADDED BY TYRONE
+===========================================*/
+.isa{
+    padding: 28px 0;
+    background: @white;
+}
+.isa_nav{
+    background: @isa-green-alpha;
+    margin-bottom: 0;
+}
+.topbar-contacts-holder{
+    margin-top: 15px;
+}
+.topbar-contacts{
+    margin: 0 0 0 24px;
+    color: @grey;
+    font-size: 13px;
+}
+.topbar-contacts .fa{
+    margin: 0 10px 0 0;
+    color: @isa-green;
+}
+.topbar-contacts a.fa{
+    text-decoration: none;
+    color: @grey;
+}
+.topbar-contacts a.fa:hover{
+    color: @isa-orange;
+}
+/*.green{
+    color: @isa-green;
+}*/
+.fixnav{
+    position: relative;
+    z-index: 100;
+    width: 100%;
+}
+
+
+
+
+/*==========================================
+            HELPERS
+===========================================*/
+.col-3{
+    width: 24%;
+}
+.col-6{
+    width: 49.298%;
+    padding: 30px;
+    position: relative;
+    /*outline: 1px solid red;*/
+}
+.col-6-custom{
+    width: 47%;
+    padding: 0;
+    /*outline: 1px solid yellow;*/
+}
+
+.btn-orange{
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    text-align: center;
+    text-transform: uppercase;
+    color: @white;
+    font-size: 12px;
+    padding: 20px 70px;
+    text-decoration: none;
+    background: @isa-orange;
+    display: inline-block;
+    text-align: center;
+}
+/*.btn-form{
+    margin: 0 auto;
+    margin-top: 35px;
+}*/
+.center{
+    text-align: center;
+}
+hr{
+    position: relative;
+    top: 44px;
+    border-top: 1px solid @grey-light;
+    margin-bottom: 40px;
+}
+
+
+/*==========================================
+            HEADER
+===========================================*/
+.topbar-contacts-holder{
+   display: block;
+}
+
+.topbar-contacts-alt-holder{
+    display: none;
+}
+
+
+/*==========================================
+            NAV
+===========================================*/
+.isa_nav{
+    position: relative;
+    top: -16px;
+}
+
+.nav{
+    li{
+        a{
+            padding: 20px 10px 15px 10px;
+        }
+    }
+}
+
+
+
+/*==========================================
+            SLIDES
+===========================================*/
+
+#slides-holder{
+    display: block;
+    height: 602px;
+    /*outline: 1px solid red;*/
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    top: -92px;
+}
+.slide-img{
+    position: absolute;
+    z-index: 90;
+    margin-left: -960px;
+    left: 50%;
+    /*width: 100%;*/
+    /*overflow: hidden;*/
+}
+
+
+.slide-info-parent{
+    display: block;
+    /*width: 1140px;*/
+    position: absolute;
+    z-index: 10;
+    top: 320px;
+    /*margin-left: -570px;*/
+    left: 50%;
+    /*outline: 1px solid red;*/
+
+        .slide-info-holder{
+            width: 500px;
+            padding: 30px;
+            background: rgba(0,0,0,0.5);
+            color: @white;
+            h2{
+                margin: 0;
+                padding: 0;
+            }
+            a.btn-primary{
+                position: absolute;
+                z-index: 100;
+                bottom: -55px;
+                left: 0;
+                color: @white;
+                &:hover{
+                    color: @white;
+                    background: @isa-orange-dark;
+                }
+            }
+        }
+}
+
+
+
+#next, #prev{
+    display: block;
+    position: absolute;
+    z-index: 101;
+    top: 380px;
+    padding: 15px;
+    color: @white;
+    background: @isa-green;
+    cursor: pointer;
+}
+#prev{left: 0;}
+#next{right: 0;}
+
+
+/*==========================================
+            FEATURES
+===========================================*/
+.feature{
+    width: 47%;
+    /*outline: 1px solid red;*/
+    position: relative;
+    /*top: -170px;*/
+    margin-bottom: 5%;
+    img{
+        cursor: pointer;
+        /*outline: 1px solid red;*/
+        max-width: 100%;
+        min-width: 100%;
+    }
+}
+.feature-divide{
+    width: 5%;
+    /*outline: 1px solid yellow;*/
+}
+.dropoff-481{
+    display: none;
+}
+
+
+/*==========================================
+            FEATURE infos
+===========================================*/
+
+.feature-info-holder{
+    padding: 3px 30px 30px 30px;
+    color: @white;
+    /*height: 300px;*/
+
+    p {
+        min-height: 62px;
+    }
+    
+    h2{
+        font-family: @sans-serif-sofia;
+    }
+}
+
+a.btn-feature{
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    text-align: center;
+    text-transform: uppercase;
+    color: @white;
+    font-size: 12px;
+    padding: 20px;
+    text-decoration: none;
+    display: block;
+}
+a.btn-feature:hover{
+    background: @black-alpha;
+    color: @white;
+}
+
+
+/*==========================================
+            HOMEPAGE CONTACT/GALLERY
+===========================================*/
+#content{
+    margin: 0;
+    position: relative;
+    top: -40px;
+}
+.col-6-form{
+    width: 48.772%;
+    margin-bottom: 1.779%;
+}
+.form-divide{
+    width: 1.779%;
+}
+
+#contact-gallery-pushup{
+    position: relative;
+
+    h2{
+        margin: 0;
+    }
+    p{
+        margin: 0 0 10px 0;
+        color: @grey-med;
+    }
+}
+.btn-orange:hover{
+    background: @isa-orange-dark;
+}
+
+.panel{
+    padding: 30px;
+    //height: 323.875px;
+    height: auto;
+}
+
+
+/*==========================================
+            FORM STUFF
+===========================================*/
+input, textarea{
+    width: 100%;
+    font-size: 12px;
+    padding: 6px;
+}
+
+
+
+
+/*==========================================
+            GALLERY STUFF
+===========================================*/
+.contact-gallery-title {
+    p {
+        min-height: 36px;
+    }
+}
+
+
+/*==========================================
+            FOOTER STUFF
+===========================================*/
+footer{
+    background: @grey-light;
+}
+.outer-footer{
+    background:@white;
+    padding: 50px;
+    text-align: center;
+    a.fa{
+        color: @grey;
+        font-size: 22px;
+        margin: 0 10px;
+        text-decoration: none;
+        &:hover{
+            color: @isa-orange;
+        }
+    }
+}
+#menu-nav-footer{
+    
+    
+    li{
+        width: 100%;
+        padding: 0 0 0 15px;
+        background: url('../images/nav-arrow.png')no-repeat 0 8px;
+        text-align: left;
+        
+
+        a{
+            font-family: @sans-serif;
+            padding: 0;
+            color: @grey-dark;
+            text-transform: none;
+            border: none!important;
+            &:hover{
+                border: none!important;
+                color: @isa-orange;
+                background: none;
+            }
+        }
+       
+    }
+}
+
+#inner-footer{
+    .col-3{
+        width: 30%;
+        margin: 0;
+        iframe{display: none;}
+    }
+    h3{
+        font-family: @sans-serif-bold;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .foot-news-holder{
+        margin-top: 15px;
+    }
+    .foot-news-link{
+        display: block;
+    }
+}
+
+/*==========================================
+                 STAFF
+===========================================*/
+.staff-holder{
+    width: 21%;
+    margin: 0 2%;    
+}
+.staff-img{
+    padding: 4px;
+    img{
+        max-width: 100%;
+        min-width: 100%;
+        margin: 0;
+    }
+}
+.staff-info{
+    b{
+        color: @grey-dark;
+        font-style: normal;
+        font-size: 13px;
+    }
+    p{
+        text-align: center;
+        font-size: 13px;
+        line-height: 1em;
+        margin-top: 5px;
+        font-style: italic;
+    }
+}
+
+/*----------------------- DROPOFFS -----------------*/
+.dropoff-768{
+    display: block;
+}
+.dropoff-481{
+    display: none;
+}

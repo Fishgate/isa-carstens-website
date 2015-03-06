@@ -1,0 +1,373 @@
+/******************************************************************
+Site Name: 
+Author: 
+
+Stylesheet: Desktop Stylsheet
+
+This is the desktop size. It's larger than an iPad so it will only
+be seen on the Desktop. 
+
+******************************************************************/
+/*==========================================
+            HELPERS
+===========================================*/
+.col-3{
+    width: 24%;
+}
+.col-6{
+    width: 49.298%;
+    padding: 30px;
+    position: relative;
+    /*outline: 1px solid red;*/
+}
+
+
+.col-6-custom{
+    width: 49.298%;
+    padding: 0;
+    /*outline: 1px solid yellow;*/
+}
+
+.btn-orange{
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    text-align: center;
+    text-transform: uppercase;
+    color: @white;
+    font-size: 12px;
+    padding: 20px 70px;
+    text-decoration: none;
+    background: @isa-orange;
+    display: inline-block;
+    text-align: center;
+}
+/*.btn-form{
+    margin: 0 auto;
+    margin-top: 35px;
+}*/
+.center{
+    text-align: center;
+}
+hr{
+    position: relative;
+    top: -44px;
+    border-top: 1px solid @grey-light;
+    margin: 0;
+}
+
+
+
+/*==========================================
+            NAV
+===========================================*/
+.isa_nav{
+    position: relative;
+    top: 1px!important;
+}
+
+.nav{
+    li{
+        a{
+            padding: 30px 20px 25px 20px;
+        }
+    }
+}
+
+
+
+
+
+/*==========================================
+            NAV
+===========================================*/
+.isa_nav{
+    position: relative;
+    top: 0;
+}
+
+.nav{
+    li{
+        a{
+            padding: 30px 20px 25px 20px;
+        }
+    }
+}
+
+
+
+/*==========================================
+            SLIDES
+===========================================*/
+#slides-holder-generic{
+    display: block;
+    height: 250px;
+    /*outline: 1px solid red;*/
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    top: -92px;
+    
+}
+
+
+#slides-holder{
+    /*height: 602px;*/
+    /*outline: 1px solid red;*/
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    top: -90px;
+}
+.slide-img{
+    position: absolute;
+    z-index: 90;
+    margin-left: -960px;
+    left: 50%;
+    /*outline: 1px solid blue;*/
+    /*width: 100%;*/
+    /*overflow: hidden;*/
+}
+
+/*==========================================
+            FEATURES
+===========================================*/
+.feature{
+    width: 24.112%;
+    /*outline: 1px solid red;*/
+    position: relative;
+    top: -170px;
+    img{
+        /*outline: 1px solid red;*/
+        max-width: 100%;
+        min-width: 100%;
+    }
+}
+
+.feature-divide{
+    width: 1.052%;
+    /*outline: 1px solid yellow;*/
+}
+
+
+
+
+/*==========================================
+            FEATURE infos
+===========================================*/
+
+.feature-info-holder{
+    padding: 3px 30px 30px 30px;
+    color: @white;
+    /*height: 260px;*/
+
+    p {
+        min-height: 92px;
+    }
+    
+    h2{
+        font-family: @sans-serif-sofia;
+    }
+}
+
+a.btn-feature{
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    text-align: center;
+    text-transform: uppercase;
+    color: @white;
+    font-size: 12px;
+    padding: 20px;
+    text-decoration: none;
+    display: block;
+}
+a.btn-feature:hover{
+    background: @black-alpha;
+    color: @white;
+}
+
+
+
+
+
+/*==========================================
+            HOMEPAGE CONTACT/GALLERY
+===========================================*/
+#content{
+    margin: 0;
+    position: relative;
+    top: -40px;
+}
+.col-6-form{
+    width: 48.772%;
+    margin-bottom: 1.779%;
+}
+.form-divide{
+    width: 1.779%;
+}
+
+#contact-gallery-pushup{
+    position: relative;
+    top: -120px;
+
+    h2{
+        margin: 0;
+    }
+    p{
+        margin: 0 0 10px 0;
+        color: @grey-med;
+    }
+}
+.btn-orange:hover{
+    background: @isa-orange-dark;
+}
+
+
+
+/*==========================================
+            FORM STUFF
+===========================================*/
+input, textarea{
+    width: 100%;
+    font-size: 12px;
+    padding: 6px;
+}
+
+
+
+
+/*==========================================
+            GALLERY STUFF
+===========================================*/
+.panel{
+    .col-4-img{
+        width: 31.333%;
+        margin: 1%;
+    }
+
+    height: 284.03125px;
+}
+
+.contact-gallery-title {
+    p {
+        min-height: 0;
+    }
+}
+
+
+
+
+
+/*==========================================
+            FOOTER STUFF
+===========================================*/
+footer{
+    background: @grey-light;
+}
+.outer-footer{
+    background:@white;
+    padding: 50px;
+    text-align: center;
+    a.fa{
+        color: @grey;
+        font-size: 22px;
+        margin: 0 10px;
+        text-decoration: none;
+        &:hover{
+            color: @isa-orange;
+        }
+    }
+}
+#menu-nav-footer{
+    
+    
+    li{
+        width: 100%;
+       
+
+        a{
+            font-family: @sans-serif;
+            padding: 0;
+            color: @grey-dark;
+            text-transform: none;
+            border: none!important;
+            &:hover{
+                border: none!important;
+                color: @isa-orange;
+            }
+        }
+       
+    }
+}
+
+#inner-footer{
+    .col-3{
+        width: 24%;
+    }
+    h3{
+        font-family: @sans-serif-bold;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .foot-news-holder{
+        margin-top: 15px;
+    }
+    .foot-news-link{
+        display: block;
+    }
+}
+
+
+/*----------------------- DROPOFFS -----------------*/
+.dropoff-1030{
+    display: block;
+}
+.dropoff-481{
+    display: block;
+}
+
+.contact-home {
+    .gform_wrapper {
+        margin: 0;
+        width: 100%;
+
+        .gform_footer {
+            margin-top: 35px;
+
+            input[type=submit],
+            input.button {
+                border: 1px solid rgba(255,255,255,0.4);
+                text-transform: uppercase;
+                
+                font-size: 12px;
+                text-decoration: none;
+                background: #ff9a66;
+                
+                width: auto;
+                padding: 20px 70px;
+            }
+        }
+
+        .top_label {
+            input.large,
+            select.large,
+            textarea {
+                font-size: 12px !important;
+                padding: 6px;
+                margin-bottom: 1.779%;
+            }
+
+        }
+
+
+        .contact-us-form {
+            .gform_body {
+                padding: 30px;
+                background: #f5f5f5;
+                height: 284.03125px;
+            }
+        }
+    }
+
+    
+}

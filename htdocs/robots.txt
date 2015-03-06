@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /wp-admin/
+Disallow: /apply-thank-you/
+Disallow: /apply/

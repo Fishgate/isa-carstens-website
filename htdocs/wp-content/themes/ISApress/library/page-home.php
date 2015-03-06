@@ -1,0 +1,400 @@
+<?php
+/*
+Template Name: Home
+*/
+?>
+
+<?php get_header(); ?>
+
+<?php
+
+// fetch general news data
+$general_newsdata = new news_data();
+
+$general_newsdata->arguments = array(
+    'post_type' => array(
+        'post', 
+        'blog_type'
+    ),
+    'posts_per_page' => 1, 
+    'order' => 'DESC',
+    'orderby' => 'date',
+    /*'tax_query' => array (
+        array (
+            'taxonomy' => 'category',
+            'field'    => 'slug',
+            'terms'    => array(
+                'somatology', 
+                'marketing', 
+                'treatments'
+            ),
+            'operator' => 'NOT IN'
+        )
+    )*/
+);
+
+if(!$general_newsdata->prep_data()) {
+    // title
+    $general_newsdata->title = 'News';
+
+    // excerpt
+    $general_newsdata->excerpt = 'Read all about it here. Catch up on what our students are up to, our social responsibility projects as well as specials on treatments.';
+
+    // url
+    $general_newsdata->url = site_url('/somatology/');
+
+    // large image url
+    $general_newsdata->large_img_url = get_template_directory_uri() . '/library/images/news.jpg';
+
+    // latest post small image url
+    $general_newsdata->small_img_url = get_template_directory_uri() . '/library/images/news_thumb.jpg';
+}
+else if (get_option('feature_news') != "on") {
+    // large image url
+    $general_newsdata->large_img_url = get_template_directory_uri() . '/library/images/news.jpg';
+
+    // latest post small image url
+    $general_newsdata->small_img_url = get_template_directory_uri() . '/library/images/news_thumb.jpg';
+}
+
+
+
+
+// somatology news data ============================================================================
+$soma_newsdata = new news_data();
+
+$soma_newsdata->arguments = array(
+    'post_type' => 'post',
+    'posts_per_page' => 1, 
+    'order' => 'DESC',
+    'orderby' => 'date',
+    'tax_query' => array (
+        array (
+            'taxonomy' => 'category',
+            'field'    => 'slug',
+            'terms'    => 'somatology'
+        )
+    )
+);
+
+if(!$soma_newsdata->prep_data() || get_option('feature_soma') != "on") {
+    // title
+    $soma_newsdata->title = 'Somatology';
+
+    // excerpt
+    $soma_newsdata->excerpt = 'The Isa Carstens Academy has been offering exceptional training in the Somatology industry for more than 36 years.';
+
+    // url
+    $soma_newsdata->url = site_url('/somatology/');
+
+    // large image url
+    $soma_newsdata->large_img_url = get_template_directory_uri() . '/library/images/somatology.jpg';
+
+    // latest post small image url
+    $soma_newsdata->small_img_url = get_template_directory_uri() . '/library/images/somatology_thumb.jpg';
+    
+}
+
+// marketing news data ============================================================================
+$marketing_newsdata = new news_data();
+
+$marketing_newsdata->arguments = array(
+    'post_type' => 'post',
+    'posts_per_page' => 1, 
+    'order' => 'DESC',
+    'orderby' => 'date',
+    'tax_query' => array (
+        array (
+            'taxonomy' => 'category',
+            'field'    => 'slug',
+            'terms'    => 'marketing'
+        )
+    )
+);
+
+if(!$marketing_newsdata->prep_data() || get_option('feature_market') != "on") {
+    // title
+    $marketing_newsdata->title = 'Marketing';
+
+    // excerpt
+    $marketing_newsdata->excerpt = 'The Isa Carstens Academy is a recognised additional tuition centre for the IMM Graduate School of Marketing.';
+
+    // url
+    $marketing_newsdata->url = site_url('/marketing/');
+
+    // large image url
+    $marketing_newsdata->large_img_url = get_template_directory_uri() . '/library/images/marketing.jpg';
+
+    // latest post small image url
+    $marketing_newsdata->small_img_url = get_template_directory_uri() . '/library/images/marketing_thumb.jpg';
+    
+}
+
+// treatments news data ============================================================================
+$treatments_newsdata = new news_data();
+
+$treatments_newsdata->arguments = array(
+    'post_type' => 'post',
+    'posts_per_page' => 1, 
+    'order' => 'DESC',
+    'orderby' => 'date',
+    'tax_query' => array (
+        array (
+            'taxonomy' => 'category',
+            'field'    => 'slug',
+            'terms'    => 'treatments'
+        )
+    )
+);
+
+if(!$treatments_newsdata->prep_data() || get_option('feature_treat') != "on") {
+
+    // title
+    $treatments_newsdata->title = 'Treatments';
+
+    // excerpt
+    $treatments_newsdata->excerpt = 'The Isa Carstens Wellness Sanctuary and Nail Lounge offer a range of spa, skin care, hand and nail treatments to the public.';
+
+    // url
+    $treatments_newsdata->url = site_url('/treatments/specials/');
+
+    // large image url
+    $treatments_newsdata->large_img_url = get_template_directory_uri() . '/library/images/treatments.jpg';
+
+    // latest post small image url
+    $treatments_newsdata->small_img_url = get_template_directory_uri() . '/library/images/treatments_thumb.jpg';
+}
+
+?>
+
+<div id="slides-holder" class="homepage-slider">
+    <!-- ///////// SLIDE 4 \\\\\\\\\ -->
+    <div class="slide-img slide-4" style="opacity: 0">
+        <img src="<?php echo $general_newsdata->large_img_url; ?>" />
+    </div>
+    
+    <!-- ///////// SLIDE 3 \\\\\\\\\ -->
+    <div class="slide-img slide-3" style="opacity: 0">
+        <img src="<?php echo $treatments_newsdata->large_img_url; ?>" />
+    </div>
+    
+    <!-- ///////// SLIDE 2 \\\\\\\\\ -->
+    <div class="slide-img slide-2" style="opacity: 0">
+        <img src="<?php echo $marketing_newsdata->large_img_url; ?>" />
+    </div>
+    
+    <!-- ///////// SLIDE 1 \\\\\\\\\ -->
+    <div class="slide-img slide-1" style="opacity: 1">
+        <img src="<?php echo $soma_newsdata->large_img_url; ?>" />
+    </div>
+    
+</div>
+
+<a id="prev" class="four"><span class="fa fa-chevron-left"></span></a>
+<a id="next" class="four"><span class="fa fa-chevron-right"></span></a>
+
+<!-- SLIDE INFO 4 -->
+<div class="slide-info-parent info-4 hidden">
+    <div class="slide-info-holder">
+        <h2><?php echo $general_newsdata->title; ?></h2>
+        <p><?php echo $general_newsdata->excerpt; ?></p>
+        <a class="btn-primary" href="<?php echo $general_newsdata->url; ?>">READ MORE</a>
+    </div>
+</div>
+
+
+<!-- SLIDE INFO 3 -->
+<div class="slide-info-parent info-3 hidden">
+    <div class="slide-info-holder">
+        <h2><?php echo $treatments_newsdata->title; ?></h2>
+        <p><?php echo $treatments_newsdata->excerpt; ?></p>
+        <a class="btn-primary" href="<?php echo $treatments_newsdata->url; ?>">READ MORE</a>
+    </div>
+</div>
+
+<!-- SLIDE INFO 2 -->
+<div class="slide-info-parent info-2 hidden">
+    <div class="slide-info-holder">
+        <h2><?php echo $marketing_newsdata->title; ?></h2>
+        <p><?php echo $marketing_newsdata->excerpt; ?></p>
+        <a class="btn-primary" href="<?php echo $marketing_newsdata->url; ?>">READ MORE</a>
+    </div>
+</div>
+
+<!-- SLIDE INFO 1 -->
+<div class="slide-info-parent info-1">
+    <div class="slide-info-holder">
+        <h2><?php echo $soma_newsdata->title; ?></h2>
+        <p><?php echo $soma_newsdata->excerpt; ?></p>
+        <a class="btn-primary" href="<?php echo $soma_newsdata->url; ?>">READ MORE</a>
+    </div>
+</div>
+
+<div id="content">
+    
+        <div id="inner-content" class="wrap clearfix">
+
+            <div id="main" class="twelvecol first clearfix" role="main">
+                <!--=====================================
+                             FEATURES x 4
+                ========================================-->
+                <div class="left feature">
+                    <img src="<?php echo $soma_newsdata->small_img_url; ?>" data-slide-num='1' />
+                    <div class="feature-info-holder feature-info-1 focus">
+                        <h2>Somatology</h2>
+                        <p>The Isa Carstens Academy has been offering exceptional training in the Somatology industry for more than 36 years.</p>
+                        <a href="<?php echo $soma_newsdata->url; ?>" class="btn-feature">read more</a>
+                    </div>
+                </div>
+                
+                <div class="left feature-divide">&nbsp;</div>
+                
+                <div class="left feature">
+                    <img src="<?php echo $marketing_newsdata->small_img_url; ?>" data-slide-num='2' />
+                    <div class="feature-info-holder feature-info-2">
+                        <h2>Marketing</h2>
+                        <p>The Isa Carstens Academy is a recognised additional tuition centre for the IMM Graduate School of Marketing.</p>
+                        <a href="<?php echo $marketing_newsdata->url; ?>" class="btn-feature">read more</a>
+                    </div>
+                </div>
+                
+                <div class="left feature-divide dropoff-481">&nbsp;</div>
+                
+                <div class="left feature">
+                    <img src="<?php echo $treatments_newsdata->small_img_url; ?>" data-slide-num='3' />
+                    <div class="feature-info-holder feature-info-3">
+                        <h2>Treatments</h2>
+                        <p>The Isa Carstens Wellness Sanctuary and Nail Lounge offer a range of spa, skin care, hand and nail treatments to the public.</p>
+                        <a href="<?php echo $treatments_newsdata->url; ?>" class="btn-feature">read more</a>
+                    </div>
+                </div>
+                
+                <div class="left feature-divide">&nbsp;</div>
+                
+                <div class="left feature">
+                    <img src="<?php echo $general_newsdata->small_img_url; ?>"  data-slide-num='4' />
+                    <div class="feature-info-holder feature-info-4">
+                        <h2>News &amp; Blog</h2>
+                        <p>Read about our latest news, what our students get up to, our social responsibility projects, specials on treatments and beauty trends and tips.</p>
+                        <a href="<?php echo site_url('/news/'); ?>" class="btn-feature">Read more</a>
+                    </div>
+                </div>
+                
+                <!-- ////////////////////////////////////////////////////////
+                                 CONTACT AND GALLERY
+                /////////////////////////////////////////////////////////// -->
+                <div id="contact-gallery-pushup" class=''><!-- adding clearfix here causes issues with hover events on teh feature infos -->
+                    <div class="left col-6-custom">
+                        <div class="contact-gallery-title text-center">
+                            <h2>Contact Us<!--test--></h2>
+                            <p class="minheight">Please complete below form and we will get back to you as soon as we can.</p>
+                        </div>
+                        
+                        <form id="contact-form">
+                            <div class="panel clearfix">
+                                <div class="left col-6-form"><input id="nameAndSurname" type="text" value="Name & Surname" name="Name & Surname" data-default="Name & Surname" /></div>
+                                <div class="left form-divide">&nbsp;</div>
+                                <div class="left col-6-form"><input id="school" type="text" value="School" name="School" data-default="School" /></div>
+
+                                <div class="left col-6-form"><input id="subject" type="text" value="Subject" name="Subject" data-default="Subject" /></div>
+                                <div class="left form-divide">&nbsp;</div>
+                                <div class="left col-6-form"><input id="grade" type="text" value="Grade" name="Grade" data-default="Grade" /></div>
+           
+                                <div class="left col-6-form"><input id="cellNumber" type="text" value="Cell Number" name="Cell Number" data-default="Cell Number" /></div>
+                                <div class="left form-divide">&nbsp;</div>
+                                <div class="left col-6-form"><input id="email" type="text" value="Email" name="Email" data-default="Email" /></div>
+
+                                <textarea id="message" name="Message" data-default="Message" >Message</textarea>
+                            </div>
+                            <div class='center'>
+                                <input type="submit" id="contact-form-submit" class="btn-orange btn-form">
+                            </div>
+                        
+                        </form>
+                    </div>
+                    <div class="left feature-divide">&nbsp;</div>
+                    <div id="home-gallery" class="left col-6-custom">
+                        <div class="contact-gallery-title text-center">
+                            <h2>Photo Gallery</h2>
+                            <p>This is what's been hapening at Isa Carstens Academy</p>
+                        </div>
+                        <div class="panel clearfix">
+                            
+                            <?php
+
+                            global $nggdb;
+                            $nextg = new $nggdb;
+
+                            ?>
+                            
+                            <?php $i = 1; foreach($nextg->find_all_galleries('gid', 'DESC', false, 6) as $gallery) : if($gallery->slug != 'staff') : ?>
+                            
+                            <?php 
+
+                            $images = $nextg->get_gallery($gallery->gid);
+
+                            $last_updated = 0;
+
+                            foreach($images as $image) {
+                                if($gallery->previewpic === $image->pid) {
+                                    $preview_pic_url = content_url('gallery/' . $image->slug . $image->thumbFolder . $image->meta_data['thumbnail']['filename']);
+                                    $preview_pic_alttext = $image->alttext;
+                                }
+
+                                if($last_updated < $image->updated_at) {
+                                    $last_updated = $image->updated_at;
+                                }
+
+                                ?>
+                                <a class="fancybox <?php echo "fancygroup$i"; ?>" data-fancybox-group="<?php echo "gallery$i"; ?>" title="<?php echo $image->alttext; ?>" href="<?php echo $image->imageURL; ?>"></a>
+                                <?php
+                            }
+
+                            ?>
+
+                            <img data-gallery="<?php echo $i; ?>" title="<?php echo $gallery->title; ?>" id="<?php echo "gallery$i"; ?>" class='left col-4-img pointer' alt="<?php echo $preview_pic_alttext; ?>" src="<?php echo $preview_pic_url; ?>" />
+                           
+                        <?php endif; $i++; endforeach; ?>
+                            
+                        </div>
+                        <div class='center'>
+                            <a href="http://staging.fishgate.co.za/isa_new/news/photo-gallery/"><input type="submit" value="More Photos" class="btn-orange btn-form pointer" /></a>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+
+                                    <article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
+
+                                            <section class="entry-content clearfix" itemprop="articleBody">
+
+                                                    <?php the_content(); ?>
+                                            </section>
+
+
+                                    </article>
+
+                    <?php endwhile; else : ?>
+
+                                    <article id="post-not-found" class="hentry clearfix">
+                                                    <header class="article-header">
+                                                            <h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
+                                            </header>
+                                                    <section class="entry-content">
+                                                            <p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>
+                                            </section>
+                                            <footer class="article-footer">
+                                                            <p><?php _e( 'This is the error message in the page-custom.php template.', 'bonestheme' ); ?></p>
+                                            </footer>
+                                    </article>
+
+                    <?php endif; ?>
+            </div>
+            <hr />
+        </div>
+
+</div>
+
+<?php get_footer(); ?>
